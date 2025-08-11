@@ -662,6 +662,15 @@ def pandas_udf(f=None, returnType=None, functionType=None):
     # Note: Python 3.11.9, Pandas 2.2.3 and PyArrow 17.0.0 are used.
     # Note: Timezone is KST.
     # Note: 'X' means it throws an exception during the conversion.
+    return vectorized_udf(f, returnType, functionType, "pandas")
+
+
+def vectorized_udf(
+    f=None,
+    returnType=None,
+    functionType=None,
+    kind: str = "pandas",
+):
     require_minimum_pandas_version()
     require_minimum_pyarrow_version()
 
